@@ -7,16 +7,17 @@ $( document ).ready(function() {
 	$('#button').click(function(){
 
 		var nom = $('#Name').val();
-		$('#text').text(nom);
 		var prenom = $('#Prenom').val()
-		$('#textprenom').text(prenom);
 		var age = $('#Age').val()
-		$('#textage').text(age);
-
+		$('table').append($("<tr><td>"+nom +"</td><td>"+prenom +"</td><td>"+age +"</td></tr>"));
 		
 		var person = {'nom':nom , 'prenom': prenom , 'age' : age};
 		annuaire.push(person)
 		console.log(annuaire);
 	})
 
+	$('#Suprimer').click(function(){
+		$('tr').remove()
+
+	})
 })
