@@ -7,17 +7,31 @@ $( document ).ready(function() {
 	$('#button').click(function(){
 
 		var nom = $('#Name').val();
-		var prenom = $('#Prenom').val()
-		var age = $('#Age').val()
-		$('table').append($("<tr><td>"+nom +"</td><td>"+prenom +"</td><td>"+age +
-			"</td><td><button id='suprimer'>Suprimer</button></td></tr>"));
+		var prenom = $('#Prenom').val();
+		var age = $('#Age').val();
+		var buttonDel = "<button id='suprimer'>suprimer</button>";
+
+			$("#tab").DataTable().row.add([
+			nom,
+			prenom,
+			age,
+			buttonDel
+			]).draw(false);
 		
 		var person = {'nom':nom , 'prenom': prenom , 'age' : age};
 		annuaire.push(person)
+		$('input').val("");
 		console.log(annuaire);
+		
 	})
 
-		$( "table" ).delegate( '#suprimer', "click", function() {
+		$( "tbody" ).delegate( '#suprimer', "click", function() {
   		$( this ).parent().parent().remove()
+
   		})
+ 		
+ 		$(document).ready(function () {
+    		$('#tab').DataTable();
+});
+ 		
 })
